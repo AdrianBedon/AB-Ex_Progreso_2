@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-exam
+    environment:
+      POSTGRES_USER: test-admin
+      POSTGRES_PASSWORD: test-password
+    volumes:
+      - .C:/Adrian/Universidad/9no Semestre/1. Wed. - Integración de Sistemas/AB-Ex_Progreso_2/init.sql
+    ports:
+      - "5432:5432"
+    networks:
+      - postgres_network
+
+networks:
+  postgres_network:
+    driver: bridge
