@@ -10,8 +10,8 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - postgres_network
+      - app-network
 
 networks:
-  postgres_network:
+  app-network:
     driver: bridge
