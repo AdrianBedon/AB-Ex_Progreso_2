@@ -1,0 +1,36 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://soap_availability.service/soap"
+           targetNamespace="http://soap_availability.service/soap" elementFormDefault="qualified">
+
+    <!-- Availability Request -->
+    <xs:element name="AvailabilityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="roomType" type="xs:string" minOccurs="0"/>
+                <xs:element name="startDate" type="xs:date" minOccurs="0"/>
+                <xs:element name="endDate" type="xs:date" minOccurs="0"/>
+                <xs:element name="status" type="xs:string" minOccurs="0"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <!-- Availability complex type definition (reusable) -->
+    <xs:complexType name="Availability">
+        <xs:sequence>
+            <xs:element name="roomId" type="xs:long"/>
+            <xs:element name="roomType" type="xs:string"/>
+            <xs:element name="availableDate" type="xs:date"/>
+            <xs:element name="status" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <!-- Availability Response -->
+    <xs:element name="AvailabilityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <!-- List of available rooms -->
+                <xs:element name="availability" maxOccurs="unbounded" type="tns:Availability"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
